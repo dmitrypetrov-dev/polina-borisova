@@ -691,11 +691,11 @@
 <section id="contact" class="relative z-10 px-4 md:px-10 py-12 md:py-20">
   <div class="max-w-[1180px] mx-auto">
 
-    <div class="reveal rounded-[2rem] bg-white card-shadow p-7 md:p-14">
+    <div class="reveal rounded-[2rem] bg-white card-shadow overflow-hidden pt-7 md:p-14">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
 
         <!-- Text -->
-        <div>
+        <div class="px-7 md:px-0">
           <div class="text-[10px] uppercase tracking-micro text-inkmute mb-3">Давайте работать вместе</div>
           <h2 class="font-display text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] tracking-[-0.02em] text-ink">
             Запросы<br><span class="italic font-normal text-coral">от&nbsp;брендов</span>
@@ -749,7 +749,7 @@
         </div>
 
         <!-- Form -->
-        <form class="rounded-2xl bg-blush/25 p-6 md:p-8 space-y-4" onsubmit="event.preventDefault(); this.querySelector('button').innerText='Отправлено';">
+        <form class="rounded-none md:rounded-2xl bg-blush/25 p-6 md:p-8 space-y-4" onsubmit="event.preventDefault(); this.querySelector('button').innerText='Отправлено';">
           <div>
             <label class="block text-[10px] uppercase tracking-micro text-inkmute mb-2">Имя · компания</label>
             <input type="text" required placeholder="Мария · Wildberries" class="w-full bg-white rounded-xl border border-ink/10 focus:border-coral outline-none px-4 py-2.5 text-[14px] text-ink placeholder:text-inkmute/60 transition-colors">
