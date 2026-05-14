@@ -1,0 +1,17 @@
+# Claude Code local config
+.claude/
+
+# Unused source photos (kept locally only)
+202604251220.jpeg
+649182494_18022024598807981_379148060616124166_n.jpg
+650369873_18023104031807981_492200963649828602_n.jpg
+670974256_18027841565807981_8265813105175336082_n.jpg
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log

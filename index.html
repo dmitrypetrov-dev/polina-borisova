@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Полина Борисова (@_polya_borisova) — блог о материнстве, семье и честных находках с Wildberries, Ozon и любимых марок." />
+  <title>Полина Борисова — @_polya_borisova · блог о семье и находках</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream:    '#F4EEE0',
+            ivory:    '#FBF6EB',
+            paper:    '#EAE2D0',
+            espresso: '#1C130D',
+            cocoa:    '#4A3529',
+            stonesoft:'#7A6A5A',
+            sage:     '#8C9A86',
+            clay:     '#B97154',
+            sand:     '#D8C6A7',
+            /* coral / peach palette for body sections */
+            coral:    '#FF6B5B',
+            peach:    '#FFB89E',
+            salmon:   '#FF9985',
+            blush:    '#FFD8C7',
+            petal:    '#FFC4AE',
+            ink:      '#1A1311',
+            inkmute:  '#6B5550',
+            card:     '#FFFFFF',
+          },
+          transitionTimingFunction: {
+            elegant: 'cubic-bezier(0.32, 0.72, 0, 1)',
+            silk:    'cubic-bezier(0.16, 1, 0.3, 1)',
+            spring:  'cubic-bezier(0.34, 1.56, 0.64, 1)',
+          },
+          letterSpacing: {
+            micro: '0.22em',
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html, body { background: #FFFFFF; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+    /* Optional very subtle warm tint for sections — barely visible */
+    .coral-bg { background: #FFFFFF; }
+
+    /* Film grain — fixed, never on scrolling content */
+    .grain::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 60;
+      opacity: 0;
+    }
+
+    /* Ambient glow — disabled on clean white */
+    .ambient::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: transparent;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Soft white card surfaces — visible on white page bg */
+    .card-shadow { box-shadow: 0 30px 60px -28px rgba(60, 30, 20, 0.18), 0 1px 0 rgba(255,255,255,0.95) inset, 0 0 0 1px rgba(26, 19, 17, 0.04); }
+    .card-shadow-sm { box-shadow: 0 18px 40px -20px rgba(60, 30, 20, 0.16), 0 1px 0 rgba(255,255,255,0.95) inset, 0 0 0 1px rgba(26, 19, 17, 0.04); }
+
+    /* Coral CTA pill */
+    .btn-coral {
+      background: linear-gradient(180deg, #FF8270 0%, #FF6B5B 100%);
+      box-shadow: 0 12px 28px -10px rgba(255,107,91,0.55), 0 1px 0 rgba(255,255,255,0.35) inset;
+    }
+    .btn-coral:hover { filter: brightness(1.05); }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(3rem); filter: blur(10px); }
+    .reveal.in {
+      opacity: 1; transform: translateY(0); filter: blur(0);
+      transition: opacity .9s cubic-bezier(0.16,1,0.3,1),
+                  transform .9s cubic-bezier(0.16,1,0.3,1),
+                  filter .9s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.delay-1 { transition-delay: .08s; }
+    .reveal.delay-2 { transition-delay: .16s; }
+    .reveal.delay-3 { transition-delay: .24s; }
+    .reveal.delay-4 { transition-delay: .32s; }
+
+    /* Marquee for brand ribbon */
+    @keyframes glide {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .glide { animation: glide 38s linear infinite; }
+
+    /* Hero name — editorial italic swash */
+    .swash { font-feature-settings: "ss01", "ss02", "dlig"; }
+
+    /* Polina portrait breathing */
+    @keyframes breathe {
+      0%,100% { transform: scale(1.02); }
+      50%     { transform: scale(1.06); }
+    }
+    .breathe { animation: breathe 14s ease-in-out infinite; }
+
+    /* Hide scrollbar on horizontal pill strip */
+    .pillstrip::-webkit-scrollbar { display: none; }
+    .pillstrip { scrollbar-width: none; }
+
+    /* Concentric radii for double-bezel */
+    .shell  { border-radius: 2rem; }
+    .core   { border-radius: calc(2rem - 0.375rem); }
+    .shell-sm { border-radius: 1.4rem; }
+    .core-sm  { border-radius: calc(1.4rem - 0.3rem); }
+    .shell-lg { border-radius: 2.6rem; }
+    .core-lg  { border-radius: calc(2.6rem - 0.5rem); }
+
+    /* Noise-free surface highlight (inset top) */
+    .hairtop { box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -1px 0 rgba(28,19,13,0.04); }
+    .hairtop-dark { box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 30px 60px -30px rgba(28,19,13,0.25); }
+
+    /* Prevent iOS Safari h-screen jumps */
+    .min-screen { min-height: 100dvh; }
+
+    /* Hamburger morph */
+    .burger span {
+      transition: transform .6s cubic-bezier(0.32,0.72,0,1),
+                  opacity .35s cubic-bezier(0.32,0.72,0,1);
+    }
+    .burger.open span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+    /* Mobile nav overlay */
+    .menu-overlay {
+      transition: opacity .7s cubic-bezier(0.32,0.72,0,1),
+                  backdrop-filter .7s cubic-bezier(0.32,0.72,0,1);
+    }
+    .menu-link {
+      transform: translateY(2.5rem);
+      opacity: 0;
+      transition: transform .8s cubic-bezier(0.16,1,0.3,1),
+                  opacity .8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .menu-overlay.open .menu-link { transform: translateY(0); opacity: 1; }
+    .menu-overlay.open .menu-link:nth-child(1){transition-delay:.08s}
+    .menu-overlay.open .menu-link:nth-child(2){transition-delay:.16s}
+    .menu-overlay.open .menu-link:nth-child(3){transition-delay:.24s}
+    .menu-overlay.open .menu-link:nth-child(4){transition-delay:.32s}
+    .menu-overlay.open .menu-link:nth-child(5){transition-delay:.40s}
+
+    /* Subtle paper texture on cream */
+    .paper-grain {
+      background-image:
+        radial-gradient(1200px 600px at 20% 10%, rgba(255,248,232,0.9), transparent 60%),
+        radial-gradient(900px 500px at 90% 80%, rgba(234,220,196,0.8), transparent 55%);
+    }
+
+    /* Topbar theme swap via CSS custom properties */
+    #topbar {
+      --hdr: #F4EEE0;
+      --hdr-muted: rgba(244, 238, 224, 0.78);
+      transition: background-color .55s cubic-bezier(0.32,0.72,0,1),
+                  border-color .55s cubic-bezier(0.32,0.72,0,1),
+                  backdrop-filter .55s cubic-bezier(0.32,0.72,0,1);
+      border-bottom: 1px solid transparent;
+    }
+    #topbar.scrolled {
+      --hdr: #1A1311;
+      --hdr-muted: #6B5550;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom-color: rgba(26, 19, 17, 0.06);
+    }
+    #topbar .hdr        { color: var(--hdr);       transition: color .45s cubic-bezier(0.32,0.72,0,1); }
+    #topbar .hdr-muted  { color: var(--hdr-muted); transition: color .45s cubic-bezier(0.32,0.72,0,1); }
+    #topbar .hdr:hover,
+    #topbar .hdr-muted:hover { color: #FF6B5B; }
+    #topbar .hdr-bar    { background: var(--hdr);  transition: background .45s cubic-bezier(0.32,0.72,0,1); }
+    #topbar .pill-new   { background: rgba(244,238,224,0.95); color: #B97154; transition: all .45s cubic-bezier(0.32,0.72,0,1); }
+    #topbar .pill-new:hover { background: #FF6B5B; color: #FFFFFF; }
+    #topbar.scrolled .pill-new { background: #FF6B5B; color: #FFFFFF; }
+    #topbar.scrolled .pill-new:hover { background: #1A1311; color: #FFFFFF; }
+  </style>
+</head>
+
+<body class="bg-white text-ink font-sans selection:bg-coral/30 selection:text-ink min-screen overflow-x-hidden">
+
+<!-- ============================================ -->
+<!--  MINIMAL TOP HEADER (full-width, over hero)  -->
+<!-- ============================================ -->
+<header id="topbar" class="fixed top-0 left-0 right-0 z-[60]">
+  <div class="relative px-5 md:px-8 py-4 md:py-5 flex items-center justify-between">
+
+    <!-- LEFT: inline nav (desktop) + mobile burger -->
+    <nav class="hidden md:flex items-center gap-6 relative z-10">
+      <a href="#about"   class="hdr text-[13px] tracking-tight inline-flex items-center gap-1">Обо&nbsp;мне <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg></a>
+      <a href="#create"  class="hdr text-[13px] tracking-tight inline-flex items-center gap-1">Что&nbsp;снимаю <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg></a>
+      <a href="#brands"  class="hdr text-[13px] tracking-tight inline-flex items-center gap-1">Бренды <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg></a>
+      <a href="#contact" class="hdr text-[13px] tracking-tight">Написать&nbsp;мне</a>
+      <a href="#journal" class="pill-new text-[11px] font-medium rounded-full px-3 py-1 tracking-tight">Новое</a>
+    </nav>
+
+    <!-- Mobile burger (same id, reused by existing menu JS) -->
+    <button id="burger" class="burger md:hidden relative w-10 h-10 z-10 flex items-center justify-center" aria-label="Меню">
+      <span class="hdr-bar absolute left-2 right-2 h-[1.5px] -translate-y-[5px]"></span>
+      <span class="hdr-bar absolute left-2 right-2 h-[1.5px]"></span>
+      <span class="hdr-bar absolute left-2 right-2 h-[1.5px] translate-y-[5px]"></span>
+    </button>
+
+    <!-- CENTER: wordmark -->
+    <a href="#top" class="hdr absolute left-1/2 -translate-x-1/2 font-display italic text-[clamp(1.25rem,1.9vw,1.7rem)] tracking-[0.15em] select-none whitespace-nowrap">
+      POLYA&nbsp;BORISOVA
+    </a>
+
+    <!-- RIGHT: icons -->
+    <div class="flex items-center gap-4 md:gap-5 relative z-10">
+      <a href="https://www.instagram.com/_polya_borisova" target="_blank" rel="noopener" aria-label="Instagram" class="hdr">
+        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+      </a>
+      <a href="https://t.me/polya_borisova" target="_blank" rel="noopener" aria-label="Telegram" class="hidden sm:inline hdr">
+        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3L2.5 10.5l6.2 2.4 2.4 6.1L14 15l5.5 5L21.5 3z"/><path d="M8.7 12.9L19.5 5"/></svg>
+      </a>
+      <a href="mailto:hi@polyaborisova.ru" aria-label="Написать" class="hdr">
+        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7l9 6 9-6M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu overlay -->
+<div id="menu" class="menu-overlay fixed inset-0 z-[65] opacity-0 pointer-events-none bg-white/90 backdrop-blur-3xl flex flex-col items-start justify-end px-6 pb-16 pt-28">
+  <span class="menu-link text-[11px] uppercase tracking-micro text-inkmute mb-8">Содержание</span>
+  <a href="#about"   class="menu-link font-display text-[12vw] leading-[0.95] italic text-ink mb-2">Обо&nbsp;мне</a>
+  <a href="#create"  class="menu-link font-display text-[12vw] leading-[0.95] italic text-ink mb-2">Что&nbsp;снимаю</a>
+  <a href="#brands"  class="menu-link font-display text-[12vw] leading-[0.95] italic text-ink mb-2">Бренды</a>
+  <a href="#journal" class="menu-link font-display text-[12vw] leading-[0.95] italic text-ink mb-2">Посты</a>
+  <a href="#contact" class="menu-link font-display text-[12vw] leading-[0.95] italic text-coral">Написать →</a>
+</div>
+
+
+<!-- ============================================ -->
+<!--  HERO — FULL-BLEED IMAGE                     -->
+<!-- ============================================ -->
+<section id="top" class="relative w-full min-h-[100dvh] overflow-hidden">
+
+  <!-- Full-bleed background video -->
+  <video
+    class="absolute inset-0 w-full h-full object-cover object-center"
+    src="hero.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="https://picsum.photos/seed/polya-bg/2400/1400"
+    aria-label="Полина Борисова"></video>
+
+  <!-- Gradient overlays for text legibility -->
+  <div class="absolute inset-0 bg-gradient-to-r from-espresso/75 via-espresso/35 to-transparent pointer-events-none"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-espresso/40 via-transparent to-espresso/30 pointer-events-none"></div>
+
+  <!-- CONTENT -->
+  <div class="relative z-20 min-h-[100dvh] flex items-center">
+    <div class="w-full max-w-[1380px] mx-auto px-5 md:px-10 pt-28 md:pt-32 pb-20">
+      <div class="max-w-[820px]">
+
+        <!-- Eyebrow pill -->
+        <div class="reveal inline-flex items-center gap-2 rounded-full border border-cream/25 bg-cream/10 backdrop-blur-md px-3 py-1 mb-10">
+          <span class="w-1.5 h-1.5 rounded-full bg-clay animate-pulse"></span>
+          <span class="text-[10px] uppercase tracking-micro text-cream">Блог о&nbsp;семье и&nbsp;находках · с&nbsp;2019</span>
+        </div>
+
+        <!-- Subheading -->
+        <p class="reveal delay-2 mt-8 max-w-[560px] text-[16px] md:text-[18px] leading-[1.6] text-cream/90" style="text-shadow: 0 1px 20px rgba(28,19,13,0.4);">
+          Честный дневник Поли Борисовой — о&nbsp;материнстве, доме
+          и&nbsp;находках с&nbsp;Wildberries, Ozon и&nbsp;любимых марок.
+        </p>
+
+        <!-- Primary CTA with button-in-button -->
+        <div class="reveal delay-3 mt-10">
+          <a href="#journal" class="group inline-flex items-center gap-2 pl-6 pr-1.5 py-2.5 rounded-full bg-cream text-espresso ring-1 ring-cream/60 hairtop transition-all duration-500 ease-elegant active:scale-[0.98]">
+            <span class="text-[14px] tracking-tight">Смотреть находки</span>
+            <span class="w-9 h-9 rounded-full bg-espresso text-cream flex items-center justify-center transition-colors duration-500 ease-elegant group-hover:bg-clay">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="reveal delay-4 absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 text-cream/75">
+    <span class="text-[9px] uppercase tracking-micro">Листайте</span>
+    <div class="w-px h-8 bg-cream/40"></div>
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!--  ABOUT — Creating a Life I Love               -->
+<!-- ============================================ -->
+<section id="about" class="relative z-10 px-4 md:px-10 pt-24 md:pt-32 pb-12 md:pb-16">
+  <div class="max-w-[1180px] mx-auto">
+
+    <div class="reveal rounded-[2rem] bg-white card-shadow overflow-hidden">
+      <div class="grid grid-cols-1 md:grid-cols-2">
+
+        <!-- Image (9:16 portrait) -->
+        <div class="relative aspect-[9/16] overflow-hidden">
+          <img src="652580562_18023104001807981_6470191363793963452_n.jpg"
+               alt="Полина Борисова — портрет"
+               class="absolute inset-0 w-full h-full object-cover object-top"
+               loading="lazy">
+        </div>
+
+        <!-- Text -->
+        <div class="p-7 md:p-12 flex flex-col justify-center">
+          <div class="text-[10px] uppercase tracking-micro text-inkmute mb-4">Обо мне</div>
+          <h2 class="font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.05] tracking-[-0.02em] text-ink">
+            Жизнь, которую я <span class="italic font-normal text-coral">люблю</span>
+          </h2>
+          <div class="mt-6 space-y-4 text-[14.5px] leading-[1.7] text-inkmute">
+            <p>
+              Привет, я&nbsp;Поля. С&nbsp;2019&nbsp;года веду блог о&nbsp;семье, доме
+              и&nbsp;честных находках с&nbsp;маркетплейсов. Снимаю обычные будни —
+              утро с&nbsp;двумя детьми, кухню, гардероб, заказы из&nbsp;Wildberries
+              и&nbsp;Ozon, которые правда работают.
+            </p>
+            <p>
+              Не&nbsp;показываю того, что&nbsp;не&nbsp;пробовала сама. Не&nbsp;хвалю
+              ради хвалебы. Поэтому 127&nbsp;000&nbsp;девушек возвращаются сюда
+              каждый день — за&nbsp;спокойствием и&nbsp;вдохновением.
+            </p>
+          </div>
+
+          <!-- Tag chips -->
+          <div class="mt-8 flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blush/60 text-[11px] text-ink border border-coral/15">
+              <span class="w-1.5 h-1.5 rounded-full bg-coral"></span>
+              Честно
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blush/60 text-[11px] text-ink border border-coral/15">
+              <span class="w-1.5 h-1.5 rounded-full bg-coral"></span>
+              По-домашнему
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blush/60 text-[11px] text-ink border border-coral/15">
+              <span class="w-1.5 h-1.5 rounded-full bg-coral"></span>
+              С&nbsp;душой
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!--  WHAT I CREATE — 3 category cards            -->
+<!-- ============================================ -->
+<section id="create" class="relative z-10 px-4 md:px-10 py-12 md:py-20">
+  <div class="max-w-[1180px] mx-auto">
+
+    <div class="reveal text-center mb-10 md:mb-12">
+      <div class="text-[10px] uppercase tracking-micro text-inkmute mb-3">Категории контента</div>
+      <h2 class="font-display text-[clamp(2rem,4.4vw,3.4rem)] leading-[1] tracking-[-0.02em] text-ink">
+        Что я <span class="italic font-normal">снимаю</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+
+      <article class="reveal group relative rounded-[1.6rem] overflow-hidden aspect-[3/4] card-shadow-sm">
+        <img src="https://picsum.photos/seed/polya-family/700/900" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div>
+        <div class="absolute bottom-4 left-4">
+          <div class="inline-block bg-black/45 backdrop-blur-md rounded-xl px-3 py-1.5">
+            <div class="text-[9px] uppercase tracking-micro text-white/70 mb-0.5">01 · Контент</div>
+            <div class="font-display italic text-white text-[1.05rem] leading-none">Семья</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="reveal delay-1 group relative rounded-[1.6rem] overflow-hidden aspect-[3/4] card-shadow-sm">
+        <img src="https://picsum.photos/seed/polya-home/700/900" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div>
+        <div class="absolute bottom-4 left-4">
+          <div class="inline-block bg-black/45 backdrop-blur-md rounded-xl px-3 py-1.5">
+            <div class="text-[9px] uppercase tracking-micro text-white/70 mb-0.5">02 · Контент</div>
+            <div class="font-display italic text-white text-[1.05rem] leading-none">Дом</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="reveal delay-2 group relative rounded-[1.6rem] overflow-hidden aspect-[3/4] card-shadow-sm">
+        <img src="https://picsum.photos/seed/polya-wardrobe/700/900" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div>
+        <div class="absolute bottom-4 left-4">
+          <div class="inline-block bg-black/45 backdrop-blur-md rounded-xl px-3 py-1.5">
+            <div class="text-[9px] uppercase tracking-micro text-white/70 mb-0.5">03 · Контент</div>
+            <div class="font-display italic text-white text-[1.05rem] leading-none">Гардероб</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!--  TRUSTED BY LEADING BRANDS                    -->
+<!-- ============================================ -->
+<section id="brands" class="relative z-10 px-4 md:px-10 py-12 md:py-20">
+  <div class="max-w-[1180px] mx-auto">
+
+    <div class="reveal rounded-[2rem] bg-white card-shadow p-7 md:p-14">
+
+      <div class="text-center mb-10 md:mb-12">
+        <div class="text-[10px] uppercase tracking-micro text-inkmute mb-3">Бренд-партнёрства</div>
+        <h2 class="font-display text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.02em] text-ink">
+          Мне доверяют<br><span class="italic font-normal text-coral">бренды</span>
+        </h2>
+        <p class="mt-4 text-[13px] text-inkmute max-w-[460px] mx-auto">Работаю с&nbsp;теми, в&nbsp;честность которых верю сама — и&nbsp;кому верят мои подписчицы.</p>
+      </div>
+
+      <!-- Brand boxes -->
+      <div class="reveal delay-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
+        <div class="rounded-xl border border-ink/10 px-4 py-5 text-center hover:border-coral/40 transition-colors">
+          <div class="font-display italic text-[1.05rem] text-ink leading-none">Wildberries</div>
+          <div class="text-[10px] uppercase tracking-micro text-inkmute mt-2">Маркетплейс</div>
+        </div>
+        <div class="rounded-xl border border-ink/10 px-4 py-5 text-center hover:border-coral/40 transition-colors">
+          <div class="font-display italic text-[1.05rem] text-ink leading-none">Ozon</div>
+          <div class="text-[10px] uppercase tracking-micro text-inkmute mt-2">Маркетплейс</div>
+        </div>
+        <div class="rounded-xl border border-ink/10 px-4 py-5 text-center hover:border-coral/40 transition-colors">
+          <div class="font-display italic text-[1.05rem] text-ink leading-none">Зол.&nbsp;Яблоко</div>
+          <div class="text-[10px] uppercase tracking-micro text-inkmute mt-2">Бьюти</div>
+        </div>
+        <div class="rounded-xl border border-ink/10 px-4 py-5 text-center hover:border-coral/40 transition-colors">
+          <div class="font-display italic text-[1.05rem] text-ink leading-none">Happy&nbsp;Baby</div>
+          <div class="text-[10px] uppercase tracking-micro text-inkmute mt-2">Дети</div>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="reveal delay-2 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mb-10">
+        <div class="rounded-2xl bg-blush/40 p-6">
+          <div class="text-coral mb-3">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M6 7h4v4H6c0 4 4 4 4 4v3c-5 0-8-3-8-7V7zm10 0h4v4h-4c0 4 4 4 4 4v3c-5 0-8-3-8-7V7z"/></svg>
+          </div>
+          <p class="text-[13px] leading-[1.65] text-ink">«Поля — редкий блогер, чьи сохранения превращаются в&nbsp;заказы. Она&nbsp;не&nbsp;хвалит ради хвалебы, поэтому ей&nbsp;верят».</p>
+          <div class="mt-4 text-[11px] text-inkmute">
+            <span class="font-medium text-ink">Мария К.</span> · Wildberries
+          </div>
+        </div>
+        <div class="rounded-2xl bg-blush/40 p-6">
+          <div class="text-coral mb-3">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M6 7h4v4H6c0 4 4 4 4 4v3c-5 0-8-3-8-7V7zm10 0h4v4h-4c0 4 4 4 4 4v3c-5 0-8-3-8-7V7z"/></svg>
+          </div>
+          <p class="text-[13px] leading-[1.65] text-ink">«Работали с&nbsp;Полей над запуском коляски — материал получился настолько честным, что&nbsp;вырос отдельный поток заказов».</p>
+          <div class="mt-4 text-[11px] text-inkmute">
+            <span class="font-medium text-ink">Анна Л.</span> · Happy&nbsp;Baby
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="reveal delay-3 text-center">
+        <a href="#contact" class="group inline-flex items-center gap-2 pl-6 pr-1.5 py-2.5 rounded-full btn-coral text-white transition-all duration-500 ease-elegant">
+          <span class="text-[14px] tracking-tight">Давайте сотрудничать</span>
+          <span class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center transition-colors duration-500 ease-elegant group-hover:bg-white group-hover:text-coral">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!--  BY THE NUMBERS                              -->
+<!-- ============================================ -->
+<section id="numbers" class="relative z-10 px-4 md:px-10 py-12 md:py-20">
+  <div class="max-w-[1180px] mx-auto">
+
+    <div class="reveal text-center mb-10 md:mb-12">
+      <div class="text-[10px] uppercase tracking-micro text-inkmute mb-3">Охваты</div>
+      <h2 class="font-display text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.02em] text-ink">
+        В <span class="italic font-normal text-coral">цифрах</span>
+      </h2>
+      <p class="mt-4 text-[13px] text-inkmute max-w-[460px] mx-auto">Аналитика об&nbsp;аудитории и&nbsp;охватах — данные Q1&nbsp;2026.</p>
+    </div>
+
+    <!-- 3 stat cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-5">
+      <div class="reveal rounded-2xl bg-white p-7 card-shadow-sm relative">
+        <div class="absolute top-5 right-5 w-9 h-9 rounded-xl bg-blush/60 flex items-center justify-center">
+          <svg class="w-4 h-4 text-coral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+        </div>
+        <div class="text-[10px] uppercase tracking-micro text-inkmute">Instagram</div>
+        <div class="font-display text-[2.6rem] leading-none mt-3 text-ink">127k</div>
+        <div class="text-[11px] text-inkmute mt-2">подписчиц · +8,4% Q1</div>
+      </div>
+      <div class="reveal delay-1 rounded-2xl bg-white p-7 card-shadow-sm relative">
+        <div class="absolute top-5 right-5 w-9 h-9 rounded-xl bg-blush/60 flex items-center justify-center">
+          <svg class="w-4 h-4 text-coral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3L2.5 10.5l6.2 2.4 2.4 6.1L14 15l5.5 5L21.5 3z"/></svg>
+        </div>
+        <div class="text-[10px] uppercase tracking-micro text-inkmute">Telegram</div>
+        <div class="font-display text-[2.6rem] leading-none mt-3 text-ink">18k</div>
+        <div class="text-[11px] text-inkmute mt-2">канал · +12% Q1</div>
+      </div>
+      <div class="reveal delay-2 rounded-2xl bg-white p-7 card-shadow-sm relative">
+        <div class="absolute top-5 right-5 w-9 h-9 rounded-xl bg-blush/60 flex items-center justify-center">
+          <svg class="w-4 h-4 text-coral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>
+        </div>
+        <div class="text-[10px] uppercase tracking-micro text-inkmute">Reels / мес.</div>
+        <div class="font-display text-[2.6rem] leading-none mt-3 text-ink">4,2m</div>
+        <div class="text-[11px] text-inkmute mt-2">просмотров</div>
+      </div>
+    </div>
+
+    <!-- Demographics + Engagement row -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+      <div class="reveal delay-2 rounded-2xl bg-white p-7 card-shadow-sm">
+        <div class="text-[10px] uppercase tracking-micro text-inkmute mb-5">Аудитория</div>
+        <div class="space-y-4">
+          <div>
+            <div class="flex items-center justify-between text-[12px] mb-1.5">
+              <span class="text-ink">Женщины 25–40</span>
+              <span class="font-medium text-coral">82%</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-blush/50 overflow-hidden">
+              <div class="h-full rounded-full bg-coral" style="width:82%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between text-[12px] mb-1.5">
+              <span class="text-ink">Москва · СПб</span>
+              <span class="font-medium text-coral">58%</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-blush/50 overflow-hidden">
+              <div class="h-full rounded-full bg-coral" style="width:58%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between text-[12px] mb-1.5">
+              <span class="text-ink">Мамы 0–7 лет</span>
+              <span class="font-medium text-coral">74%</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-blush/50 overflow-hidden">
+              <div class="h-full rounded-full bg-coral" style="width:74%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal delay-3 rounded-2xl bg-white p-7 card-shadow-sm">
+        <div class="text-[10px] uppercase tracking-micro text-inkmute mb-5">Вовлечённость</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="rounded-xl bg-blush/30 p-4">
+            <div class="text-[10px] uppercase tracking-micro text-inkmute">Engagement&nbsp;rate</div>
+            <div class="font-display text-[1.9rem] leading-none mt-2 text-ink">8,4<span class="text-coral text-[1.3rem]">%</span></div>
+          </div>
+          <div class="rounded-xl bg-blush/30 p-4">
+            <div class="text-[10px] uppercase tracking-micro text-inkmute">Сохранений</div>
+            <div class="font-display text-[1.9rem] leading-none mt-2 text-ink">6,4<span class="text-coral text-[1.3rem]">k</span></div>
+          </div>
+          <div class="rounded-xl bg-blush/30 p-4">
+            <div class="text-[10px] uppercase tracking-micro text-inkmute">Заказов / Reels</div>
+            <div class="font-display text-[1.9rem] leading-none mt-2 text-ink">2,5<span class="text-coral text-[1.3rem]">k</span></div>
+          </div>
+          <div class="rounded-xl bg-blush/30 p-4">
+            <div class="text-[10px] uppercase tracking-micro text-inkmute">Запросов / мес</div>
+            <div class="font-display text-[1.9rem] leading-none mt-2 text-ink">42</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!--  RECENT POSTS (Instagram grid)               -->
+<!-- ============================================ -->
+<section id="journal" class="relative z-10 px-4 md:px-10 py-12 md:py-20">
+  <div class="max-w-[1180px] mx-auto">
+
+    <div class="reveal text-center mb-10 md:mb-12">
+      <div class="text-[10px] uppercase tracking-micro text-inkmute mb-3">Свежее в&nbsp;Instagram</div>
+      <h2 class="font-display text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.02em] text-ink">
+        Недавние <span class="italic font-normal text-coral">посты</span>
+      </h2>
+      <p class="mt-4 text-[13px] text-inkmute max-w-[460px] mx-auto">Каждый день — обычные будни, обзоры и&nbsp;честные «до и&nbsp;после».</p>
+    </div>
+
+    <!-- 6-image grid -->
+    <div class="reveal delay-1 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-10">
+      <a href="https://www.instagram.com/_polya_borisova" target="_blank" rel="noopener" class="group relative aspect-square rounded-2xl overflow-hidden card-shadow-sm">
+        <img src="https://picsum.photos/seed/post-1/600/600" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">Гардероб WB · 15к</div>
+      </a>
+      <a href="https://www.instagram.com/_polya_borisova" target="_blank" rel="noopener" class="group relative aspect-square rounded-2xl overflow-hidden card-shadow-sm">
+        <img src="https://picsum.photos/seed/post-2/600/600" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">Утро с&nbsp;детьми</div>
+      </a>
+      <a href="https://www.instagram.com/_polya_borisova" target="_blank" rel="noopener" class="group relative aspect-square rounded-2xl overflow-hidden card-shadow-sm">
+        <img src="https://picsum.photos/seed/post-3/600/600" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">Коляска Chicco · тест</div>
+      </a>
+      <a href="https://www.instagram.com/_polya_borisova" target="_blank" rel="noopener" class="group relative aspect-square rounded-2xl overflow-hidden card-shadow-sm">
+        <img src="https://picsum.photos/seed/post-4/600/600" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">Детская за&nbsp;40к</div>
+      </a>
+      <a href="https://www.instagram.com/_polya_borisova" target="_blank" rel="noopener" class="group relative aspect-square rounded-2xl overflow-hidden card-shadow-sm">
+        <img src="https://picsum.photos/seed/post-5/600/600" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">Уход после родов</div>
+      </a>
+      <a href="https://www.instagram.com/_polya_borisova" target="_blank" rel="noopener" class="group relative aspect-square rounded-2xl overflow-hidden card-shadow-sm">
+        <img src="https://picsum.photos/seed/post-6/600/600" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">Stories Q&A</div>
+      </a>
+    </div>
+
+    <div class="reveal delay-2 text-center">
+      <a href="https://www.instagram.com/_polya_borisova" target="_blank" rel="noopener" class="group inline-flex items-center gap-2 pl-6 pr-1.5 py-2.5 rounded-full btn-coral text-white transition-all duration-500 ease-elegant">
+        <span class="text-[14px] tracking-tight">Подписаться в&nbsp;Instagram</span>
+        <span class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center transition-colors duration-500 ease-elegant group-hover:bg-white group-hover:text-coral">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!--  BRAND INQUIRIES — split text + form         -->
+<!-- ============================================ -->
+<section id="contact" class="relative z-10 px-4 md:px-10 py-12 md:py-20">
+  <div class="max-w-[1180px] mx-auto">
+
+    <div class="reveal rounded-[2rem] bg-white card-shadow p-7 md:p-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+
+        <!-- Text -->
+        <div>
+          <div class="text-[10px] uppercase tracking-micro text-inkmute mb-3">Давайте работать вместе</div>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] tracking-[-0.02em] text-ink">
+            Запросы<br><span class="italic font-normal text-coral">от&nbsp;брендов</span>
+          </h2>
+          <p class="mt-4 text-[14px] leading-[1.7] text-inkmute max-w-[400px]">
+            Открыта к&nbsp;коллабам, которые сходятся с&nbsp;моими ценностями —
+            честность, забота и&nbsp;«по-настоящему». Отвечаю обычно в&nbsp;тот&nbsp;же день.
+          </p>
+
+          <div class="mt-8 space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl bg-blush/60 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-coral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9 6 9-6M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1z"/></svg>
+              </div>
+              <div>
+                <div class="text-[10px] uppercase tracking-micro text-inkmute">Email</div>
+                <a href="mailto:hi@polyaborisova.ru" class="text-[14px] text-ink hover:text-coral transition-colors">hi@polyaborisova.ru</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl bg-blush/60 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-coral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 7L4 7M20 12L4 12M20 17L4 17"/></svg>
+              </div>
+              <div>
+                <div class="text-[10px] uppercase tracking-micro text-inkmute">Менеджмент</div>
+                <span class="text-[14px] text-ink">Мария · Creative Agency</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl bg-blush/60 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-coral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </div>
+              <div>
+                <div class="text-[10px] uppercase tracking-micro text-inkmute">Время ответа</div>
+                <span class="text-[14px] text-ink">В&nbsp;течение 24&nbsp;часов</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Partnership chips -->
+          <div class="mt-8">
+            <div class="text-[10px] uppercase tracking-micro text-inkmute mb-3">Форматы коллабораций</div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-full bg-blush/60 text-[11px] text-ink">Reels-обзор</span>
+              <span class="px-3 py-1.5 rounded-full bg-blush/60 text-[11px] text-ink">Серия Stories</span>
+              <span class="px-3 py-1.5 rounded-full bg-blush/60 text-[11px] text-ink">Распаковка</span>
+              <span class="px-3 py-1.5 rounded-full bg-blush/60 text-[11px] text-ink">Длинный пост</span>
+              <span class="px-3 py-1.5 rounded-full bg-blush/60 text-[11px] text-ink">Прямой эфир</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="rounded-2xl bg-blush/25 p-6 md:p-8 space-y-4" onsubmit="event.preventDefault(); this.querySelector('button').innerText='Отправлено';">
+          <div>
+            <label class="block text-[10px] uppercase tracking-micro text-inkmute mb-2">Имя · компания</label>
+            <input type="text" required placeholder="Мария · Wildberries" class="w-full bg-white rounded-xl border border-ink/10 focus:border-coral outline-none px-4 py-2.5 text-[14px] text-ink placeholder:text-inkmute/60 transition-colors">
+          </div>
+          <div>
+            <label class="block text-[10px] uppercase tracking-micro text-inkmute mb-2">Email</label>
+            <input type="email" required placeholder="maria@wildberries.ru" class="w-full bg-white rounded-xl border border-ink/10 focus:border-coral outline-none px-4 py-2.5 text-[14px] text-ink placeholder:text-inkmute/60 transition-colors">
+          </div>
+          <div>
+            <label class="block text-[10px] uppercase tracking-micro text-inkmute mb-2">Тип сотрудничества</label>
+            <select class="w-full bg-white rounded-xl border border-ink/10 focus:border-coral outline-none px-4 py-2.5 text-[14px] text-ink transition-colors">
+              <option>Reels-обзор</option>
+              <option>Серия Stories</option>
+              <option>Распаковка</option>
+              <option>Длинный пост</option>
+              <option>Несколько форматов</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] uppercase tracking-micro text-inkmute mb-2">О&nbsp;бренде и&nbsp;продукте</label>
+            <textarea rows="4" placeholder="Расскажите о&nbsp;продукте и&nbsp;о&nbsp;том, как видите коллаб…" class="w-full bg-white rounded-xl border border-ink/10 focus:border-coral outline-none px-4 py-2.5 text-[14px] text-ink placeholder:text-inkmute/60 transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit" class="group w-full inline-flex items-center justify-center gap-3 py-4 mt-2 rounded-full btn-coral text-white transition-all duration-500 ease-elegant">
+            <span class="text-[13px] tracking-[0.1em] uppercase font-medium">Отправить запрос</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!--  FOOTER                                       -->
+<!-- ============================================ -->
+<footer class="relative z-10 px-4 md:px-10 pt-8 pb-10">
+  <div class="max-w-[1180px] mx-auto pt-8 border-t border-ink/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-inkmute">
+    <div class="font-display italic text-[18px] text-ink">Polya&nbsp;Borisova.</div>
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+      <a href="https://www.instagram.com/_polya_borisova" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Instagram</a>
+      <a href="https://t.me/polya_borisova" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Telegram</a>
+      <a href="mailto:hi@polyaborisova.ru" class="hover:text-ink transition-colors">hi@polyaborisova.ru</a>
+    </div>
+    <span class="italic">© 2026 · @_polya_borisova</span>
+  </div>
+</footer>
+
+
+<!-- ============================================ -->
+<!--  JS — reveal + mobile menu                    -->
+<!-- ============================================ -->
+<script>
+  // Scroll reveal via IntersectionObserver (no scroll listeners — mobile-safe)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Topbar theme swap — light text over hero, dark text once scrolled past
+  const topbar = document.getElementById('topbar');
+  const hero = document.getElementById('top');
+  if (topbar && hero) {
+    const heroObs = new IntersectionObserver(([entry]) => {
+      topbar.classList.toggle('scrolled', !entry.isIntersecting);
+    }, { threshold: 0, rootMargin: '-72px 0px 0px 0px' });
+    heroObs.observe(hero);
+  }
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const menu   = document.getElementById('menu');
+  function setMenu(open) {
+    burger.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    menu.style.opacity = open ? '1' : '0';
+    menu.style.pointerEvents = open ? 'auto' : 'none';
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+</script>
+
+</body>
+</html>
